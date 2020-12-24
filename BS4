@@ -1,0 +1,38 @@
+import requests
+from bs4 import BeautifulSoup as Bs
+
+
+""" page = requests.get("http://dataquestio.github.io/web-scraping-pages/simple.html")
+soup = Bs(page.content, 'html.parser')
+
+''' print(soup.prettify())  # prints the page's html content organized
+a = list(soup.children)
+html = a[2]  # print the main part of the html document without the doctype
+main_html = list(html.children)  # new list of the different parts of the html doc
+head = main_html[1]  # the head of the html doc
+body = main_html[3]  # the body of the html doc
+body_ = list(body.children)  # contents of the body
+p = body_[1]  # isolate the paragraph
+content = p.get_text()  # content of the paragraph
+print(content) '''
+
+# c = soup.find('p')  # finds first occurrence of the specified tag
+a = soup.find_all('p')  # finds all the instances of a tag on a page and puts em on a list
+b = a[0].get_text()  # gets the text pf the paragraph
+print(b) """
+
+#  search by class or id 'p',
+#  class_="ex" or id="ex"
+
+
+
+# CSS SELECTORS
+
+# p a — finds all a tags inside of a p tag.
+# body p a — finds all a tags inside of a p tag inside of a body tag.
+# html body — finds all body tags inside of an html tag.
+# p.outer-text — finds all p tags with a class of outer-text.
+# p#first — finds all p tags with an id of first.
+# body p.outer-text — finds any p tags with a class of outer-text inside of a body tag.
+
+# soup.select('css selector') returns a list of all the matches
